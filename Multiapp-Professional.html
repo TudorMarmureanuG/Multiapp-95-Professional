@@ -1,910 +1,778 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024">
-    <link rel="icon" type="image/png" href="">
-    <title>Multiapp 95 Professional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiapp - 95 Professional</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  display: grid;
-  place-content: center;
-  color: hsl(270, 10%, 80%);
-  font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to top right, hsl(270, 50%, 50%), hsl(290, 60%, 70%));
-  min-height: 100vh;
-  padding: 3rem;
-  overflow-x: hidden;
-}
-
-button {
-  font-size: inherit;
-  font-family: inherit;
-}
-
-button:hover,
-button:focus {
-  outline: none;
-}
-
-a,
-a:hover,
-a:focus {
-  outline: none;
-  text-decoration: none;
-}
-
-.dash {
-  background: hsl(270, 50%, 10%);
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  box-shadow: 4px 4px 30px hsla(270, 30%, 10%, .4);
-  max-width: 1266px;
-}
-
-.dash * {
-  transition: all .1s;
-}
-
-.header {
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  z-index: 2;
-  box-shadow: 0 4px 12px hsla(270, 30%, 3%, .2);
-}
-
-.header__heading {
-  width: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header__heading>a {
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: hsl(270, 50%, 10%);
-  background: hsl(220, 60%, 60%);
-  padding: .2rem .7rem;
-  font-size: 1.5rem;
-  border-radius: 4px;
-}
-
-.header__heading>a:hover {
-  background: hsl(220, 80%, 64%);
-}
-
-.header__search {
-  flex-grow: 1;
-  padding: 0 8.6rem;
-}
-
-.header__search-icon {
-  width: 3.8rem;
-  height: 3.8rem;
-  border-radius: 3.8rem;
-  background: hsl(270, 32%, 17%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.header__search-icon:hover {
-  background: hsl(270, 32%, 20%);
-}
-
-.header__search-icon>svg {
-  height: 1.6rem;
-  opacity: .4;
-}
-
-.header__search-icon:hover>svg {
-  opacity: .7;
-}
-
-.header__options {
-  padding-right: 2.8rem;
-}
-
-.header__pro {
-  color: #eef0ff;
-  background: linear-gradient(to top right, #546FFF, #8A9CFF);
-  border: 0;
-  margin-right: 5rem;
-  font-size: 1.2rem;
-  padding: .7rem 1.8rem;
-  border-radius: 6px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.header__link {
-  font-size: 1.4rem;
-  opacity: .8;
-  color: inherit;
-}
-
-.header__link:first-of-type:hover {
-  opacity: 1;
-}
-
-.header__link:not(:first-of-type) {
-  margin-left: 2rem;
-  opacity: 1;
-}
-
-.body {
-  flex-grow: 2;
-  display: flex;
-}
-
-.sidebar {
-  width: 8rem;
-  box-shadow: 2px 0 12px hsla(270, 30%, 10%, .2);
-}
-
-.sidebar__icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  margin-top: 4rem;
-  cursor: pointer;
-}
-
-.sidebar__icon:first-of-type {
-  margin-top: 5rem;
-}
-
-.sidebar__icon:not(:first-of-type) {
-  opacity: .3;
-}
-
-.sidebar__icon:not(:first-of-type):hover {
-  opacity: 1;
-}
-
-.sidebar__icon:last-child {
-  margin-top: 10rem;
-}
-
-.sidebar__icon>svg {
-  height: 2.2rem;
-}
-
-.ss-heading {
-  font-weight: 400;
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  letter-spacing: 3px;
-  color: hsl(235, 5%, 70%);
-}
-
-.ss-show {
-  color: hsl(210, 60%, 60%);
-  font-size: 1.2rem;
-}
-
-.ss-show:hover {
-  color: hsl(210, 70%, 70%);
-}
-
-.ss-dots {
-  display: flex;
-}
-
-.ss-dots>span {
-  width: 6px;
-  height: 6px;
-  border: 1px solid currentColor;
-  border-radius: 6px;
-  margin-right: 2px;
-  opacity: .6;
-  cursor: pointer;
-}
-
-.ss-dots>span:hover {
-  opacity: 1;
-}
-
-.main {
-  flex-grow: 2;
-  background: linear-gradient(to right top, hsla(270, 50%, 8%, .5), hsla(270, 50%, 8%, .6) 20%, hsla(270, 50%, 8%, .1)), linear-gradient(to right bottom, hsl(270, 50%, 8%), transparent 66%), linear-gradient(to bottom, transparent, hsl(270, 50%, 8%) 56%), url("") no-repeat;
-  background-size: auto 500px;
-  padding: 4rem 0 0 8rem;
-  display: flex;
-  border-bottom-right-radius: 8px;
-}
-
-.main__col-1 {
-  width: 30%;
-}
-
-.main__heading {
-  font-size: 3rem;
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-}
-
-.main__heading>span {
-  width: 4rem;
-  height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  margin-right: 1.6rem;
-  margin-bottom: -2px;
-}
-
-.main__heading svg {
-  height: .7em;
-}
-
-.main__desc {
-  margin: 1.5rem 0 1rem;
-  font-size: 1.4rem;
-  opacity: .6
-}
-
-.main__sub {
-  font-size: 1.2rem;
-}
-
-.main__sub span:first-of-type {
-  opacity: .4;
-}
-
-.main__list-heading-wrap {
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-  margin: 8rem 0 5rem;
-}
-
-.main__list-heading {
-  flex-grow: 2;
-}
-
-.main__list {
-  list-style: none;
-  position: relative;
-}
-
-.main__list::before {
-  content: "MUAP";
-  position: absolute;
-  bottom: 17%;
-  left: -18%;
-  opacity: .03;
-  font-size: 18rem;
-  font-weight: bold;
-}
-
-.main__list-item {
-  padding: 0 0 0.7rem 2rem;
-  border-left: 2px solid hsla(0, 0%, 50%, .2);
-  position: relative;
-  display: flex;
-  color: #9D9DAC;
-}
-
-.main__list-item:first-of-type .main__list-content {
-  color: hsl(240, 8%, 90%);
-}
-
-.main__list-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 4px;
-  height: 4px;
-  border-radius: 4px;
-  background: hsl(210, 70%, 70%);
-  transform: translateX(-3px);
-}
-
-.main__list-item:first-of-type::before {
-  top: 0;
-}
-
-.main__list-item:first-of-type .main__list-content {
-  line-height: .3;
-}
-
-.main__list-item:last-of-type {
-  padding-bottom: 2.6rem;
-}
-
-.main__list-item-image {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 1px;
-  margin-right: 1rem;
-  box-shadow: 0 2px 10px hsla(270, 30%, 2%, .6);
-}
-
-.main__list-item-image img {
-  border-radius: inherit;
-}
-
-.main__list-content {
-  font-size: 1.4rem;
-  cursor: pointer;
-}
-
-.main__list-content:hover {
-  color: hsl(240, 8%, 90%);
-}
-
-.main__list-sub {
-  margin-top: .4rem;
-  font-size: 1.1rem;
-  opacity: .6;
-}
-
-.main__col-2 {
-  width: 70%;
-  padding-left: 6rem;
-}
-
-.main__cards-container {
-  width: 70%;
-  border-radius: 8px;
-  padding: 3rem;
-  background: hsl(270, 50%, 11%);
-  box-shadow: 0 6px 16px 0 hsla(270, 30%, 3%, .4);
-  margin-left: auto;
-  transform: translateX(4rem)
-}
-
-.main__cards-container-heading-wrap {
-  display: flex;
-  align-items: center;
-  padding: 1rem 0;
-}
-
-.main__cards-container-heading {
-  flex-grow: 2;
-}
-
-.main__cards {
-  list-style: none;
-  padding: 2.6rem 0 2rem;
-  display: flex;
-}
-
-.main__card {
-  color: hsla(0, 0%, 100%, .8);
-  background: #090909;
-  transform: translateX(-15rem);
-  flex-shrink: 0;
-  margin-left: 1.5rem;
-  width: 21rem;
-  border-radius: 8px;
-  text-align: right;
-  padding: 2.2rem;
-  box-shadow: 0 2px 12px hsla(var(--hue), 50%, 60%, .2), 0 4px 32px hsla(var(--hue), 50%, 60%, .2);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.main__card-image-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.main__card-image-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(to right, hsla(var(--hue), 60%, 60%, .3), 40%, hsl(var(--hue), 70%, 60%));
-}
-
-.main__card-heading {
-  font-size: 2rem;
-  font-weight: normal;
-}
-
-.main__card-heading-sub {
-  margin-top: .4rem;
-  font-size: 1.2rem;
-}
-
-.main__card-heading-type {
-  margin-top: 2.8rem;
-}
-
-.main__cards-pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main__cards-buttons>button {
-  color: inherit;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.main__cards-buttons>button:hover {
-  opacity: 1 !important;
-}
-
-.main__cards-buttons svg {
-  height: 1.6rem;
-}
-
-.main__crossing-container {
-  width: 88%;
-  background-color: hsl(270, 50%, 11%);
-  background-image: linear-gradient(120deg, hsla(286, 80%, 50%, 0.5), 10%, hsl(270, 50%, 11%) 60%), url("");
-  box-shadow: 0 6px 16px 0 hsla(270, 30%, 3%, .4);
-  border-radius: 8px;
-  padding: 2rem 3.6rem;
-  display: flex;
-  align-items: center;
-  transform: translate(-2rem, 2.4rem);
-  position: relative;
-  z-index: 2;
-}
-
-.main__crossing-image {
-  border: 3px solid hsl(182, 98%, 51%);
-  border-right-color: transparent;
-  box-shadow: 0 0 12px hsla(270, 30%, 10%, .4);
-  transform: rotate(-45deg);
-  width: 5.4rem;
-  height: 5.4rem;
-  border-radius: 5.4rem;
-  overflow: hidden;
-  background: #090909;
-}
-
-.main__crossing-image>img {
-  width: 5.4rem;
-  transform: translate(-3px, -3px) rotate(45deg);
-  border-radius: 5.4rem;
-  border: 6px solid transparent;
-}
-
-.main__crossing-current {
-  flex-grow: 2;
-  margin-left: 3rem;
-}
-
-.main__crossing-upper {
-  text-transform: uppercase;
-  margin-bottom: .6rem;
-  letter-spacing: 2px;
-}
-
-.main__crossing-heading {
-  font-weight: normal;
-  font-size: 1.6rem;
-}
-
-.main__discover {
-  width: 88%;
-  background-color: hsl(270, 50%, 11%);
-  box-shadow: 0 8px 12px 0 hsla(270, 30%, 5%, .2);
-  border-radius: 8px;
-  padding: 8rem 3.6rem 2rem;
-  margin-left: auto;
-  transform: translate(1.4rem, -2.1rem);
-}
-
-.main__discover-heading-container {
-  display: flex;
-  align-items: center;
-}
-
-.main__discover-heading {
-  flex-grow: 2;
-}
-
-.main__discover-places {
-  padding: 4rem 0 1rem;
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
-
-.main__discover-place {
-  flex-shrink: 0;
-  margin-right: 1.4rem;
-  background: hsl(270, 50%, 15%);
-  transform: translateX(-8rem);
-  padding: 1.6rem;
-  width: 24%;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px 0 hsla(270, 30%, 7%, .2);
-  cursor: pointer;
-}
-
-.main__discover-place:hover {
-  background: hsl(270, 50%, 17%);
-}
-
-.main__discover-place-heading {
-  font-size: 1.4rem;
-  font-weight: normal;
-  margin-bottom: 6px;
-}
-
-.main__discover-place-sub {
-  font-size: 1rem;
-  opacity: .4;
-}
-
-.main__discover__more {
-  margin-top: 3.6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main__discover__more-svg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 8px;
-}
-
-.main__discover__more svg {
-  height: 2.6rem;
-  transform: translate(2.4px, 1.6px);
-}
-
-.main__discover-right {
-  opacity: .6;
-  margin-left: -45px;
-  cursor: pointer;
-}
-
-.main__discover-right:hover {
-  opacity: 1;
-}
-
-.main__discover-right>svg {
-  height: 1.6rem;
-}
-
-.main__footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: .2rem 0 2.3rem 10rem;
-}
-
-.main__footer-more svg {
-  height: 1em;
-  vertical-align: middle;
-}
-
-.main__info {
-  display: flex;
-  align-items: center;
-}
-
-.main__info-link {
-  color: inherit;
-  font-size: 1.4rem;
-}
-
-.main__info-link:hover {
-  color: #fff;
-}
-
-.main__info-link:hover svg {
-  opacity: .7;
-}
-
-.main__info-link svg {
-  height: 1.4em;
-  transform: translateY(1px);
-  opacity: .4;
-}
-
-.main__info-link+.main__info-link {
-  margin-left: .6rem;
-}
-
-.main__cp {
-  margin: 0 1rem 0 2.6rem;
-}
-
-.main__cr {
-  opacity: .4;
-  margin-right: 5rem;
-}
-
-.main__cr:hover {
-  opacity: .7;
-}
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #333333;
+            color: #d9bf9f;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #222222;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header__heading a {
+            color: #d9bf9f;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .header__search {
+            display: flex;
+            align-items: center;
+            background-color: #444444;
+            border-radius: 5px;
+            padding: 0.5rem;
+            width: 200px;
+        }
+        
+        .header__search-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #d9bf9f;
+        }
+        
+        .header__options {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header__pro {
+            background: linear-gradient(to bottom, #d9bf9f, #b5aa96);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .header__pro a {
+            color: #333333 !important;
+        }
+        
+        .header__link {
+            color: #d9bf9f;
+            font-size: 0.9rem;
+        }
+        
+        /* Retro Logo Section */
+        .retro-logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 0;
+            background-color: #2a2a2a;
+            margin-bottom: 2rem;
+        }
+        
+        .retro-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .retro-computer {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        
+        .computer-box {
+            width: 100px;
+            height: 100px;
+            background-color: #b5aa96;
+            position: relative;
+            transform: perspective(300px) rotateX(10deg) rotateY(-20deg);
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+        }
+        
+        .computer-screen {
+            position: absolute;
+            width: 70px;
+            height: 50px;
+            background-color: #222222;
+            top: 15px;
+            left: 15px;
+        }
+        
+        .computer-vents {
+            position: absolute;
+            width: 70px;
+            height: 15px;
+            bottom: 15px;
+            left: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .vent {
+            width: 10px;
+            height: 5px;
+            background-color: #444444;
+        }
+        
+        .retro-title {
+            font-family: 'Courier New', monospace;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #d9bf9f;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Sidebar Styles */
+        .body {
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 70px;
+            background-color: #222222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+            gap: 2rem;
+        }
+        
+        .sidebar__icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .sidebar__icon svg {
+            width: 24px;
+            height: 24px;
+            color: #d9bf9f;
+        }
+        
+        /* Main Content Styles */
+        .main {
+            flex: 1;
+            display: flex;
+            padding: 2rem;
+            gap: 2rem;
+        }
+        
+        .main__col-1 {
+            flex: 1;
+        }
+        
+        .main__heading {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+        
+        .main__heading span {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main__heading span svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .main__desc {
+            color: #d9bf9f;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .main__sub {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .main__list-heading-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0 1rem;
+        }
+        
+        .ss-heading {
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+        
+        .ss-show {
+            color: #d9bf9f;
+            font-size: 0.8rem;
+        }
+        
+        .main__list {
+            list-style: none;
+        }
+        
+        .main__list-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(217, 191, 159, 0.2);
+        }
+        
+        .main__list-content {
+            color: #d9bf9f;
+            margin-bottom: 0.3rem;
+        }
+        
+        .main__list-sub {
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        /* Col-2 Styles */
+        .main__col-2 {
+            flex: 2;
+        }
+        
+        .main__cards-container-heading-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .main__cards {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        
+        .main__card {
+            background-color: #222222;
+            border-radius: 8px;
+            padding: 1.5rem;
+            flex: 1;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main__card-heading {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .main__card-heading-sub {
+            color: #d9bf9f;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .main__card-heading-type {
+            color: #d9bf9f;
+            font-size: 0.8rem;
+        }
+        
+        .main__cards-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0 2rem;
+        }
+        
+        .ss-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .ss-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: #d9bf9f;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+        
+        .ss-dots span:first-child {
+            opacity: 1;
+        }
+        
+        .main__cards-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .main__cards-buttons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .main__cards-buttons button svg {
+            width: 24px;
+            height: 24px;
+            color: #d9bf9f;
+        }
+        
+        .main__crossing-container {
+            background-color: #222222;
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main__crossing-image {
+            width: 60px;
+            height: 60px;
+            background-color: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main__crossing-heading {
+            color: #ffffff;
+            margin: 0;
+        }
+        
+        .main__crossing-upper {
+            color: #d9bf9f;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .main__discover-heading-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .main__discover-places {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            list-style: none;
+            position: relative;
+        }
+        
+        .main__discover-place {
+            background-color: #222222;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main__discover-place-heading {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        
+        .main__discover-place-sub {
+            color: #d9bf9f;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .main__discover__more {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .main__discover__more-svg {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main__discover__more-svg svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .main__discover-right {
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: #d9bf9f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .main__discover-right svg {
+            width: 15px;
+            height: 15px;
+            color: #333;
+        }
+        
+        .main__footer {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .main__footer-more {
+            color: #d9bf9f;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .main__footer-more span svg {
+            width: 15px;
+            height: 15px;
+        }
+        
+        .main__info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .main__info-link {
+            color: #d9bf9f;
+        }
+        
+        .main__info-link svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .main__cp {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        /* Pixel Buttons */
+        .pixel-button {
+            background-color: #d9bf9f;
+            color: #333333;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .pixel-button::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: -3px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3);
+            z-index: -1;
+        }
+        
+        .pixel-button:hover {
+            transform: translate(-2px, -2px);
+        }
+        
+        .pixel-button:hover::after {
+            transform: translate(4px, 4px);
+        }
     </style>
-  </head>
-
-  <body>
-
-    <div class="dash">
-
-      <!-- HEADER -->
-      <header class="header">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
         <h1 class="header__heading"><a href="" target="" rel="noreferrer noopener">TM</a></h1>
         <div class="header__search">
-          <div class="header__search-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
+            <div class="header__search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
         </div>
         <div class="header__options">
-          <button class="header__pro"><a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" style="color: aliceblue;">BUY</a></button>
-          <a href="" class="header__link">Log in</a>
-          <a href="" class="header__link">Sign up</a>
+            <button class="header__pro"><a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" style="color: #333333;">BUY</a></button>
+            <a href="" class="header__link">Log in</a>
+            <a href="" class="header__link">Sign up</a>
         </div>
-      </header>
+    </header>
 
-      <!-- BODY -->
-      <div class="body">
+    <!-- RETRO LOGO SECTION -->
+    <section class="retro-logo-section">
+        <div class="retro-container">
+            <div class="retro-computer">
+                <div class="computer-box">
+                    <div class="computer-screen"></div>
+                    <div class="computer-vents">
+                        <div class="vent"></div>
+                        <div class="vent"></div>
+                        <div class="vent"></div>
+                        <div class="vent"></div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="retro-title">Multiapp</h1>
+        </div>
+    </section>
 
+    <!-- BODY -->
+    <div class="body">
         <!-- SIDEBAR -->
         <div class="sidebar">
+            <div class="sidebar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+            </div>
+            
+            <div class="sidebar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </div>
 
-          <div class="sidebar__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
-          </div>
-          
-          <div class="sidebar__icon">
-            <!--<a href="server-generation/admin/admin-panel.html">-->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <a href="" style="color: aliceblue;"></a>
-          </div>
+            <div class="sidebar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </div>
 
-          <div class="sidebar__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <a href="" style="color: aliceblue;"></a>
-          </div>
+            <div class="sidebar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+            </div>
 
-          <div class="sidebar__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-            <a href="" style="color: aliceblue;"></a>
-          </div>
+            <div class="sidebar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+            </div>
 
-          <div class="sidebar__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-            </svg>
-            <a href="" style="color: aliceblue;"></a>
-          </div>
-
-          <div class="sidebar__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-            <a href="" style="color: aliceblue;"></a>
-          </div>
-
+            <div class="sidebar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </div>
         </div>
 
         <!-- MAIN -->
         <main class="main">
+            <!-- COL-1 -->
+            <div class="main__col-1">
+                <!-- HEADING -->
+                <div>
+                    <h2 class="main__heading"><span style="background: linear-gradient(to bottom, hsl(247, 88%, 70%), hsl(282, 82%, 51%)); box-shadow: 0 2px 12px hsla(247, 88%, 70%, .3)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                        </span> Multiapp - 95 Professional</h2>
+                    <p class="main__desc">With Multiapp, your IT department can manage tasks more quickly and efficiently. The integrated automation transforms daily challenges into simple solutions.</p>
+                    <p class="main__sub"><span>Founder:</span> <span>Tudor Marmureanu</span></p>
+                    <button class="pixel-button">GET STARTED</button>
+                </div>
 
-          <!-- COL-1 -->
-          <div class="main__col-1">
+                <!-- LIST -->
+                <div class="main__list-heading-wrap">
+                    <h2 class="main__list-heading ss-heading">Most Related</h2>
+                    <a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" class="ss-show">show all</a>
+                </div>
 
-            <!-- HEADING -->
-            <div>
-              <h2 class="main__heading"><span style="background: linear-gradient(to bottom, hsl(247, 88%, 70%), hsl(282, 82%, 51%)); box-shadow: 0 2px 12px hsla(247, 88%, 70%, .3)">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                </span> Multiapp - 95 Professional</h2>
-              <p class="main__desc">With Multiapp, your IT department can manage tasks more quickly and efficiently. The integrated automation transforms daily challenges into simple solutions.</p>
-              <p class="main__sub"><span>Founder:</span> <span>Tudor Marmureanu</span></p><br>
+                <ul class="main__list">
+                    <li class="main__list-item">
+                        <div class="main__list-content-wrap">
+                            <a href=""><p class="main__list-content">✔ Fast and efficient functionality</p></a>
+                            <p class="main__list-sub">Normal</p>
+                        </div>
+                    </li>
+
+                    <li class="main__list-item">
+                        <div class="main__list-content-wrap">
+                            <a href=""><p class="main__list-content">✔ Test the compatibility (minimally required system specifications) with your computer directly from the application.</p></a>
+                            <p class="main__list-sub">Normal</p>
+                        </div>
+                    </li>
+
+                    <li class="main__list-item">
+                        <div class="main__list-content-wrap">
+                            <a href=""><p class="main__list-content">✔ No additional repair kit is needed; you can do it in not just one, but two ways directly from the application.</p></a>
+                            <p class="main__list-sub">High</p>
+                        </div>
+                    </li>
+
+                    <li class="main__list-item">
+                        <div class="main__list-content-wrap">
+                            <a href=""><p class="main__list-content">✔ Automate repetitive processes and more in your IT department.</p></a>
+                            <p class="main__list-sub">Normal</p>
+                        </div>
+                    </li>
+
+                    <li class="main__list-item">
+                        <div class="main__list-content-wrap">
+                            <a href=""><p class="main__list-content">✔ Advanced security</p></a>
+                            <p class="main__list-sub">High</p>
+                        </div>
+                    </li>
+                    
+                    <li class="main__list-item">
+                        <div class="main__list-content-wrap">
+                            <a href=""><p class="main__list-content">✔ Python IDE</p></a>
+                            <p class="main__list-sub">High</p>
+                        </div>
+                    </li>
+                    
+                    <li class="main__list-item">
+                        <div class="main__list-content-wrap">
+                            <a href=""><p class="main__list-content">✔ SQL editor & viewer</p></a>
+                            <p class="main__list-sub">High</p>
+                        </div>
+                    </li>
+                    
+                    <li class="main__list-item">
+                        <div class="main__list-content-wrap">
+                            <a href=""><p class="main__list-content">✔ Diagram maker</p></a>
+                            <p class="main__list-sub">Normal</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
 
-            <!-- LIST -->
-            <div class="main__list-heading-wrap">
-              <h2 class="main__list-heading ss-heading">Most Related</h2>
-              <a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" class="ss-show">show all</a>
-            </div>
+            <!-- COL-2 -->
+            <div class="main__col-2">
+                <!-- CARDS -->
+                <div class="main__cards-container">
+                    <div class="main__cards-container-heading-wrap">
+                        <h2 class="main__cards-container-heading ss-heading">View Software Details</h2>
+                        <a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" class="ss-show">show all</a>
+                    </div>
 
-            <ul class="main__list">
+                    <ul class="main__cards">
+                        <li class="main__card" style="--hue: 25">
+                            <div class="main__card-image-container">
+                                <img src="" alt="" class="main__card-image">
+                            </div>
+                            <h3 class="main__card-heading"><b>AI Integrated</b></h3>
+                            <p class="main__card-heading-sub"><b>AI Chatbot for virtual assistance. Currently 99% available for the Romanian language.</b></p>
+                            <a href="" style="color: #d9bf9f; font-size: 12px;"><p class="main__card-heading-type">✔</p></a>
+                        </li>
 
-              <li class="main__list-item">
-                <div class="main__list-content-wrap">
-                  <a href=""><p class="main__list-content" style="color: aliceblue;">✔ Fast and efficient functionality</p></a>
-                  <p class="main__list-sub">Normal</p>
+                        <li class="main__card" style="--hue: 250">
+                            <div class="main__card-image-container">
+                                <img src="" alt="" class="main__card-image">
+                            </div>
+                            <h3 class="main__card-heading"><b>Troubleshooting</b></h3>
+                            <p class="main__card-heading-sub"><b>Diagnose hardware and network issues using this software.</b></p>
+                            <a href="" style="color: #d9bf9f; font-size: 12px;"><p class="main__card-heading-type">✔</p></a>
+                        </li>
+
+                        <li class="main__card" style="--hue: 231;">
+                            <div class="main__card-image-container">
+                                <img src="" alt="" class="main__card-image">
+                            </div>
+                            <h3 class="main__card-heading"><b>Easy access</b></h3>
+                            <p class="main__card-heading-sub"><b>Launcher for Multiapp accounts</b></p>
+                            <a href="" style="color: #d9bf9f; font-size: 12px;"><p class="main__card-heading-type">✔</p></a>
+                        </li>
+                    </ul>
+
+                    <div class="main__cards-pagination">
+                        <span class="ss-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <div class="main__cards-buttons">
+                            <button style="opacity: .4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-              </li>
 
-              <li class="main__list-item">
-                <div class="main__list-content-wrap">
-                  <a href=""><p class="main__list-content" style="color: aliceblue;">✔ Test the compatibility (minimally required system specifications) with your computer directly from the application.</p></a>
-                  <p class="main__list-sub">Normal</p>
+                <!-- CROSSING -->
+                <div class="main__crossing-container">
+                    <div class="main__crossing-image">
+                        <img src="" alt="">
+                        <p class="main__crossing-heading"><b>KB</b></p>
+                    </div>
+                    <div class="main__crossing-current">
+                        <p class="main__crossing-upper">
+                            ✔ Knowledgebase system
+                        </p>
+                        <a href="" style="color: #d9bf9f;">
+                        <h3 class="main__crossing-heading">
+                            Easy KB Framework
+                        </h3>
+                        </a>
+                    </div>
                 </div>
-              </li>
 
-              <li class="main__list-item">
-                <div class="main__list-content-wrap">
-                  <a href=""><p class="main__list-content" style="color: aliceblue;">✔ No additional repair kit is needed; you can do it in not just one, but two ways directly from the application.</p></a>
-                  <p class="main__list-sub">High</p>
-                </div>
-              </li>
+                <!-- DISCOVER -->
+                <div class="main__discover">
+                    <div class="main__discover-heading-container">
+                        <h3 class="main__discover-heading ss-heading">Discover More Services</h3>
+                        <a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" class="ss-show">show all</a>
+                    </div>
 
-              <li class="main__list-item">
-                <div class="main__list-content-wrap">
-                  <a href=""><p class="main__list-content" style="color: aliceblue;">✔ Automate repetitive processes and more in your IT department.</p></a>
-                  <p class="main__list-sub">Normal</p>
-                </div>
-              </li>
-
-              <li class="main__list-item">
-                <div class="main__list-content-wrap">
-                  <a href=""><p class="main__list-content" style="color: aliceblue;">✔ Advanced security</p></a>
-                  <p class="main__list-sub">High</p>
-                </div>
-              </li>
-			  
-			  <li class="main__list-item">
-                <div class="main__list-content-wrap">
-                  <a href=""><p class="main__list-content" style="color: aliceblue;">✔ Python IDE</p></a>
-                  <p class="main__list-sub">High</p>
-                </div>
-              </li>
-			  
-			  <li class="main__list-item">
-                <div class="main__list-content-wrap">
-                  <a href=""><p class="main__list-content" style="color: aliceblue;">✔ SQL editor & viewer</p></a>
-                  <p class="main__list-sub">High</p>
-                </div>
-              </li>
-			  
-			  <li class="main__list-item">
-                <div class="main__list-content-wrap">
-                  <a href=""><p class="main__list-content" style="color: aliceblue;">✔ Diagram maker</p></a>
-                  <p class="main__list-sub">Normal</p>
-                </div>
-              </li>
-
-            </ul>
-
-          </div>
-
-          <!-- COL-2 -->
-          <div class="main__col-2">
-
-            <!-- CARDS -->
-            <div class="main__cards-container">
-
-              <div class="main__cards-container-heading-wrap">
-                <h2 class="main__cards-container-heading ss-heading">View Software Detailes</h2>
-                <a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" class="ss-show">show all</a>
-              </div>
-
-              <ul class="main__cards">
-                <li class="main__card" style="--hue: 25">
-                  <div class="main__card-image-container">
-                    <img src="" alt="" class="main__card-image">
-                  </div>
-                  <h3 class="main__card-heading"><b>AI Integrated</b></h3>
-                  <p class="main__card-heading-sub"><b>AI Chatbot for virtual assistance. Currently 99% available for the Romanian language.</b></p>
-                  <a href="" style="color: aliceblue; font-size: 12px;"><p class="main__card-heading-type">✔</p></a>
-                </li>
-
-                <li class="main__card" style="--hue: 250">
-                  <div class="main__card-image-container">
-                    <img src="" alt="" class="main__card-image">
-                  </div>
-                  <h3 class="main__card-heading"><b>Troubleshooting</b></h3>
-                  <p class="main__card-heading-sub"><b>Diagnose hardware and network issues using this software.</b></p>
-                  <a href="" style="color: aliceblue; font-size: 12px;"><p class="main__card-heading-type">✔</p></a>
-                </li>
-
-                <li class="main__card" style="--hue: 231;">
-                  <div class="main__card-image-container">
-                    <img src="" alt="" class="main__card-image">
-                  </div>
-                  <h3 class="main__card-heading"><b>Easy acces</b></h3>
-                  <p class="main__card-heading-sub"><b>Launcher for Multiapp accounts</b></p>
-                  <a href="" style="color: aliceblue; font-size: 12px;"><p class="main__card-heading-type">✔</p></a>
-                </li>
-              </ul>
-
-              <div class="main__cards-pagination">
-                <span class="ss-dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </span>
-                <div class="main__cards-buttons">
-                  <button style="opacity: .4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- CROSSING -->
-            <div class="main__crossing-container">
-              <div class="main__crossing-image">
-                <img src="" alt="">
-                <p class="main__crossing-heading"><b>KB</b></p>
-              </div>
-              <div class="main__crossing-current">
-                <p class="main__crossing-upper">
-                  ✔ Knowledgebase system
-                </p>
-                <a href="" style="color: aliceblue;">
-                <h3 class="main__crossing-heading">
-                  Easy KB Framework
-                </h3>
-                </a>
-              </div>
-            </div>
-
-            <!-- DISCOVER -->
-            <div class="main__discover">
-
-              <div class="main__discover-heading-container">
-                <h3 class="main__discover-heading ss-heading">Discover More Services</h3>
-                <a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" class="ss-show">show all</a>
-              </div>
-
-              <ul class="main__discover-places">
-
-                <li class="main__discover-place">
-                  <h4 class="main__discover-place-heading">Files Workflow</h4>
-                  <p class="main__discover-place-sub">✔ Encrypt important files with the help of Multiapp.</p>
-                  <p class="main__discover-place-sub">✔ Integrated support for: backup, file comparator, .zip password cracker, .pdf tools, organizer, copy file manager, etc.</p>
-                  <div class="main__discover__more">
+                    <ul class="main__discover-places">
+                        <li class="main__discover-place">
+                            <h4 class="main__discover-place-heading">Files Workflow</h4>
+                            <p class="main__discover-place-sub">✔ Encrypt important files with the help of Multiapp.</p>
+                            <p class="main__discover-place-sub">✔ Integrated support for: backup, file comparator, .zip password cracker, .pdf tools, organizer, copy file manager, etc.</p>
+					<div class="main__discover__more">
                     <div class="main__discover__more-svg" style="background: linear-gradient(20deg, hsla(0, 60%, 50%, .2), hsla(20, 60%, 50%, .3));">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <defs>
@@ -922,12 +790,13 @@ a:focus {
                       <span></span>
                     </span>
                   </div>
-                </li>
-
-                <li class=" main__discover-place">
-                  <h4 class="main__discover-place-heading">Office support</h4>
-                  <p class="main__discover-place-sub">✔ Include an Office Lite package (Excel, PowerPoint, Word).</p>
-                  <div class="main__discover__more">
+				  </ul><br><br>
+				    
+					<ul class="main__discover-places">
+						<li class="main__discover-place">
+							<h4 class="main__discover-place-heading">Office support</h4>
+							<p class="main__discover-place-sub">✔ Include an Office Lite package (Excel, PowerPoint, Word).</p>
+							<div class="main__discover__more">
                     <div class="main__discover__more-svg" style="background: linear-gradient(20deg, hsla(280, 60%, 50%, .2), hsla(300, 60%, 50%, .3));">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <defs>
@@ -945,11 +814,12 @@ a:focus {
                       <span></span>
                     </span>
                   </div>
-                </li>
-
-                <li class="main__discover-place">
-                  <h4 class="main__discover-place-heading">CMD Integration</h4>
-                  <p class="main__discover-place-sub">✔ Terminal emulator</p>
+				  </ul><br><br>
+				  
+				  <ul class="main__discover-places">
+					<li class="main__discover-place">
+						<h4 class="main__discover-place-heading">CMD Integration</h4>
+						<p class="main__discover-place-sub">✔ Terminal emulator</p>
                   <div class="main__discover__more">
                     <div class="main__discover__more-svg" style="background: linear-gradient(20deg, hsla(210, 60%, 50%, .2), hsla(230, 60%, 50%, .3));">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -967,14 +837,14 @@ a:focus {
                       <span></span>
                       <span></span>
                     </span>
-                  </div>
-                </li>
-
-                <li class="main__discover-place">
-                  <h4 class="main__discover-place-heading">Security</h4>
-                  <p class="main__discover-place-sub">✔ Use the password manager and generate strong passwords using special algorithms.</p>
-                  <p class="main__discover-place-sub">✔ Encrypt important files with the help of Multiapp.</p>
-                  <div class="main__discover__more">
+                  </div></ul><br><br>
+				  
+				  <ul class="main__discover-places">
+					<li class="main__discover-place">
+						<h4 class="main__discover-place-heading">Security</h4>
+						<p class="main__discover-place-sub">✔ Use the password manager and generate strong passwords using special algorithms.</p>
+						<p class="main__discover-place-sub">✔ Encrypt important files with the help of Multiapp.</p>
+					<div class="main__discover__more">
                     <div class="main__discover__more-svg" style="background: linear-gradient(20deg, hsla(120, 60%, 50%, .2), hsla(140, 60%, 50%, .3));">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <defs>
@@ -991,68 +861,25 @@ a:focus {
                       <span></span>
                       <span></span>
                     </span>
-                  </div>
-                </li>
-
-                <div class="main__discover-right">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
+                  </div></ul><br><br>
+				  
+				</div>
+				<div class="main__discover-right">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
                 </div>
 
-              </ul>
-
+                
             </div>
-
-            <!-- FOOTER -->
-            <footer class="main__footer">
-
-              <a href="https://mega.nz/file/VEwmQJBR#owfz-dLE4Mr3cQhhbOEIO8sWQOcsgAPkdezKbnVmZuA" class="main__footer-more ss-show">...and more <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </span></a>
-
-              <div class="main__info">
-                <a href="" target="" rel="noreferrer noopener" class="main__info-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter">
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                  </svg>
-                </a>
-                <a href="" target="" rel="noreferrer noopener" class="main__info-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                </a>
-                <a href="" target="" rel="noreferrer noopener" class="main__info-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dribbble">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
-                  </svg>
-                </a>
-
-                <p class="main__cp" style="font-size: 1.4rem; text-align: center; ">
-                  Copyright &copy; <a href="" target="" rel="noreferrer noopener" class="main__info-link" style="border-bottom: 1px solid  hsla(270, 10%, 50%, .4);">Tudor Marmureanu</a>
-                </p>
-
-                <p class="main__cr">
-                  <a href="" target="" rel="noreferrer noopener">
-                    <img src="" alt="" height="50rem">
-                  </a>
-                </p>
-				
-              </div>
-
-            </footer>
-
-          </div>
-
+			<!-- FOOTER -->
+                <div class="main__footer">
+                    <div class="main__info">
+                        <p class="main__cp">&copy; 2025 Multiapp. All rights reserved.</p>
+                    </div>
+                </div>
         </main>
-
-      </div>
-
     </div>
-
-  </body>
-
+</body>
 </html>
